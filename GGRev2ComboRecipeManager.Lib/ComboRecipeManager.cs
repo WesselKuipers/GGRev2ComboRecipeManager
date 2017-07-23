@@ -25,12 +25,13 @@ namespace GGRev2ComboRecipeManager.Lib
 
         public static ComboRecipe[] ReadComboRecipes()
         {
-            var process = Process.GetProcessesByName("GuiltyGearXrd")?[0];
-            if (process == null)
+            var processes = Process.GetProcessesByName("GuiltyGearXrd");
+            if (processes.Length < 1)
             {
                 return null;
             }
 
+            var process = processes[0];
             var processHandle = OpenProcess(PROCESS_WM_READ | PROCESS_VM_WRITE | PROCESS_VM_OPERATION, false, process.Id);
 
             var bytesRead = 0;
