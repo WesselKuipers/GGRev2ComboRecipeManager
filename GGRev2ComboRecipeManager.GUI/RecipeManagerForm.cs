@@ -35,6 +35,7 @@ namespace GGRev2ComboRecipeManager.GUI
             if (recipes == null)
             {
                 MessageBox.Show("Unable to read Combo Recipe data.");
+                return;
             }
 
             ComboRecipes = recipes.ToList();
