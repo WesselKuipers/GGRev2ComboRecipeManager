@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -165,6 +166,11 @@ namespace GGRev2ComboRecipeManager.GUI
             }
 
             return null;
+        }
+
+        private void btnOpenRecipeFolder_Click(object sender, EventArgs e)
+        {
+            Process.Start(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes"));
         }
     }
 }

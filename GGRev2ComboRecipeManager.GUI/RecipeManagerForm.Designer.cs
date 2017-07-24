@@ -50,6 +50,7 @@
             this.lblCharacterSlot3 = new System.Windows.Forms.Label();
             this.lblCharacterSlot4 = new System.Windows.Forms.Label();
             this.lblCharacterSlot5 = new System.Windows.Forms.Label();
+            this.btnOpenRecipeFolder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -252,11 +253,22 @@
             this.lblCharacterSlot5.TabIndex = 20;
             this.lblCharacterSlot5.Text = "Unknown";
             // 
+            // btnOpenRecipeFolder
+            // 
+            this.btnOpenRecipeFolder.Location = new System.Drawing.Point(177, 12);
+            this.btnOpenRecipeFolder.Name = "btnOpenRecipeFolder";
+            this.btnOpenRecipeFolder.Size = new System.Drawing.Size(114, 23);
+            this.btnOpenRecipeFolder.TabIndex = 21;
+            this.btnOpenRecipeFolder.Text = "Open Recipe Folder";
+            this.btnOpenRecipeFolder.UseVisualStyleBackColor = true;
+            this.btnOpenRecipeFolder.Click += new System.EventHandler(this.btnOpenRecipeFolder_Click);
+            // 
             // RecipeManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(303, 176);
+            this.Controls.Add(this.btnOpenRecipeFolder);
             this.Controls.Add(this.lblCharacterSlot5);
             this.Controls.Add(this.lblCharacterSlot4);
             this.Controls.Add(this.lblCharacterSlot3);
@@ -311,6 +323,7 @@
         private System.Windows.Forms.Label lblCharacterSlot3;
         private System.Windows.Forms.Label lblCharacterSlot4;
         private System.Windows.Forms.Label lblCharacterSlot5;
+        private System.Windows.Forms.Button btnOpenRecipeFolder;
     }
 }
 
