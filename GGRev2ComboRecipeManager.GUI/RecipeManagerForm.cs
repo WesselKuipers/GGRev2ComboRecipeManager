@@ -26,6 +26,8 @@ namespace GGRev2ComboRecipeManager.GUI
             btnExportSlot3.Enabled = false;
             btnExportSlot4.Enabled = false;
             btnExportSlot5.Enabled = false;
+
+            Directory.CreateDirectory(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes"));
         }
 
         private void btnReadRecipes_Click(object sender, EventArgs e)
@@ -128,7 +130,8 @@ namespace GGRev2ComboRecipeManager.GUI
             var sfd = new SaveFileDialog
             {
                 Filter = "Guilty Gear Combo Recipe|*.ggcr",
-                FileName = $"Combo{slotNr + 1}.ggcr"
+                FileName = $"Combo{slotNr + 1}.ggcr",
+                InitialDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes")
             };
 
             if (sfd.ShowDialog() == DialogResult.OK)
@@ -141,7 +144,9 @@ namespace GGRev2ComboRecipeManager.GUI
         {
             var ofd = new OpenFileDialog
             {
-                Filter = "Guilty Gear Combo Recipe|*.ggcr"
+                Filter = "Guilty Gear Combo Recipe|*.ggcr",
+                InitialDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes"),
+                RestoreDirectory = true
             };
 
             if (ofd.ShowDialog() == DialogResult.OK)

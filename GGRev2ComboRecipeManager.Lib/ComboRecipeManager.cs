@@ -10,7 +10,7 @@ namespace GGRev2ComboRecipeManager.Lib
         const int PROCESS_VM_WRITE = 0x0020;
         const int PROCESS_VM_OPERATION = 0x0008;
 
-        const int SLOT1_OFFSET = 0x01BC8190;
+        const int SLOT1_OFFSET = 0x1AD8194;
         public const int SLOT_DATA_SIZE = 1028;
         public const int SLOT_CHARCODE_SIZE = 4;
 
@@ -61,7 +61,7 @@ namespace GGRev2ComboRecipeManager.Lib
             var bytesRead = 0;
             var buffer = new byte[SLOT_DATA_SIZE];
 
-            ReadProcessMemory((int)processHandle, SLOT1_OFFSET * slotNr, buffer, buffer.Length, ref bytesRead);
+            ReadProcessMemory((int)processHandle, process.MainModule.BaseAddress.ToInt32() + SLOT1_OFFSET * slotNr, buffer, buffer.Length, ref bytesRead);
 
             return new ComboRecipe(buffer, slotNr);
         }
@@ -79,7 +79,7 @@ namespace GGRev2ComboRecipeManager.Lib
             var data = recipe.ToRecipeData();
             var bytesWritten = 0;
 
-            WriteProcessMemory((int)processHandle, SLOT1_OFFSET + (SLOT_DATA_SIZE * slotNr), data, data.Length, ref bytesWritten);
+            WriteProcessMemory((int)processHandle, process.MainModule.BaseAddress.ToInt32() + SLOT1_OFFSET + (SLOT_DATA_SIZE * slotNr), data, data.Length, ref bytesWritten);
         }
     }
 }
