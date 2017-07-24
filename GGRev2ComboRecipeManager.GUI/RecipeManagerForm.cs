@@ -28,11 +28,17 @@ namespace GGRev2ComboRecipeManager.GUI
             btnExportSlot4.Enabled = false;
             btnExportSlot5.Enabled = false;
 
+            btnImportSlot1.Enabled = false;
+            btnImportSlot2.Enabled = false;
+            btnImportSlot3.Enabled = false;
+            btnImportSlot4.Enabled = false;
+            btnImportSlot5.Enabled = false;
+
             Directory.CreateDirectory(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes"));
         }
 
         private void btnReadRecipes_Click(object sender, EventArgs e)
-        {
+        {          
             var recipes = ComboRecipeManager.ReadComboRecipes();
 
             if (recipes == null)
@@ -43,17 +49,21 @@ namespace GGRev2ComboRecipeManager.GUI
 
             ComboRecipes = recipes.ToList();
 
-            lblCharacterSlot1.Text = ComboRecipes[0].CharacterCode.ToString();
-            lblCharacterSlot2.Text = ComboRecipes[1].CharacterCode.ToString();
-            lblCharacterSlot3.Text = ComboRecipes[2].CharacterCode.ToString();
-            lblCharacterSlot4.Text = ComboRecipes[3].CharacterCode.ToString();
-            lblCharacterSlot5.Text = ComboRecipes[4].CharacterCode.ToString();
+            var characterNames = ComboRecipes.Select(cr => Enum.IsDefined(typeof(CharacterCode), cr.CharacterCode)
+                ? cr.CharacterCode.ToString()
+                : CharacterCode.Unknown.ToString()).ToArray();
 
-            btnExportSlot1.Enabled = ComboRecipes[0].CharacterCode != CharacterCode.Unknown;
-            btnExportSlot2.Enabled = ComboRecipes[1].CharacterCode != CharacterCode.Unknown;
-            btnExportSlot3.Enabled = ComboRecipes[2].CharacterCode != CharacterCode.Unknown;
-            btnExportSlot4.Enabled = ComboRecipes[3].CharacterCode != CharacterCode.Unknown;
-            btnExportSlot5.Enabled = ComboRecipes[4].CharacterCode != CharacterCode.Unknown;
+            lblCharacterSlot1.Text = characterNames[0];
+            lblCharacterSlot2.Text = characterNames[1];
+            lblCharacterSlot3.Text = characterNames[2];
+            lblCharacterSlot4.Text = characterNames[3];
+            lblCharacterSlot5.Text = characterNames[4];
+
+            btnExportSlot1.Enabled = btnImportSlot1.Enabled = ComboRecipes[0].CharacterCode != CharacterCode.Unknown;
+            btnExportSlot2.Enabled = btnImportSlot2.Enabled = ComboRecipes[1].CharacterCode != CharacterCode.Unknown;
+            btnExportSlot3.Enabled = btnImportSlot3.Enabled = ComboRecipes[2].CharacterCode != CharacterCode.Unknown;
+            btnExportSlot4.Enabled = btnImportSlot4.Enabled = ComboRecipes[3].CharacterCode != CharacterCode.Unknown;
+            btnExportSlot5.Enabled = btnImportSlot5.Enabled = ComboRecipes[4].CharacterCode != CharacterCode.Unknown;
         }
 
         private void btnExportSlot1_Click(object sender, EventArgs e)
@@ -128,6 +138,11 @@ namespace GGRev2ComboRecipeManager.GUI
 
         private void ExportComboRecipe(int slotNr)
         {
+            if (Directory.Exists(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes")))
+            {
+                Directory.CreateDirectory(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes"));
+            }
+
             var sfd = new SaveFileDialog
             {
                 Filter = "Guilty Gear Combo Recipe|*.ggcr",
@@ -143,6 +158,11 @@ namespace GGRev2ComboRecipeManager.GUI
 
         private ComboRecipe ImportComboRecipe(int slotNr)
         {
+            if (Directory.Exists(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes")))
+            {
+                Directory.CreateDirectory(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes"));
+            }
+
             var ofd = new OpenFileDialog
             {
                 Filter = "Guilty Gear Combo Recipe|*.ggcr",
