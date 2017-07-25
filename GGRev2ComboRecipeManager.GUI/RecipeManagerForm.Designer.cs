@@ -35,28 +35,41 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnReadRecipes = new System.Windows.Forms.Button();
-            this.btnImportSlot1 = new System.Windows.Forms.Button();
-            this.btnExportSlot1 = new System.Windows.Forms.Button();
-            this.btnExportSlot2 = new System.Windows.Forms.Button();
-            this.btnImportSlot2 = new System.Windows.Forms.Button();
-            this.btnExportSlot3 = new System.Windows.Forms.Button();
-            this.btnImportSlot3 = new System.Windows.Forms.Button();
-            this.btnExportSlot4 = new System.Windows.Forms.Button();
-            this.btnImportSlot4 = new System.Windows.Forms.Button();
-            this.btnExportSlot5 = new System.Windows.Forms.Button();
-            this.btnImportSlot5 = new System.Windows.Forms.Button();
+            this.btnImportRecipeSlot1 = new System.Windows.Forms.Button();
+            this.btnExportRecipeSlot1 = new System.Windows.Forms.Button();
+            this.btnExportRecipeSlot2 = new System.Windows.Forms.Button();
+            this.btnImportRecipeSlot2 = new System.Windows.Forms.Button();
+            this.btnExportRecipeSlot3 = new System.Windows.Forms.Button();
+            this.btnImportRecipeSlot3 = new System.Windows.Forms.Button();
+            this.btnExportRecipeSlot4 = new System.Windows.Forms.Button();
+            this.btnImportRecipeSlot4 = new System.Windows.Forms.Button();
+            this.btnExportRecipeSlot5 = new System.Windows.Forms.Button();
+            this.btnImportRecipeSlot5 = new System.Windows.Forms.Button();
             this.lblCharacterSlot1 = new System.Windows.Forms.Label();
             this.lblCharacterSlot2 = new System.Windows.Forms.Label();
             this.lblCharacterSlot3 = new System.Windows.Forms.Label();
             this.lblCharacterSlot4 = new System.Windows.Forms.Label();
             this.lblCharacterSlot5 = new System.Windows.Forms.Label();
             this.btnOpenRecipeFolder = new System.Windows.Forms.Button();
+            this.lblDivider = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnExportDummySlot3 = new System.Windows.Forms.Button();
+            this.btnImportDummySlot3 = new System.Windows.Forms.Button();
+            this.btnExportDummySlot2 = new System.Windows.Forms.Button();
+            this.btnImportDummySlot2 = new System.Windows.Forms.Button();
+            this.btnExportDummySlot1 = new System.Windows.Forms.Button();
+            this.btnImportDummySlot1 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnReadDummyRecordings = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 46);
+            this.label1.Location = new System.Drawing.Point(8, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 0;
@@ -65,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 72);
+            this.label2.Location = new System.Drawing.Point(8, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 1;
@@ -74,7 +87,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 98);
+            this.label3.Location = new System.Drawing.Point(8, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 2;
@@ -83,7 +96,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 124);
+            this.label4.Location = new System.Drawing.Point(8, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 3;
@@ -92,7 +105,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 150);
+            this.label5.Location = new System.Drawing.Point(8, 175);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 4;
@@ -100,7 +113,7 @@
             // 
             // btnReadRecipes
             // 
-            this.btnReadRecipes.Location = new System.Drawing.Point(45, 12);
+            this.btnReadRecipes.Location = new System.Drawing.Point(48, 37);
             this.btnReadRecipes.Name = "btnReadRecipes";
             this.btnReadRecipes.Size = new System.Drawing.Size(126, 23);
             this.btnReadRecipes.TabIndex = 5;
@@ -108,110 +121,120 @@
             this.btnReadRecipes.UseVisualStyleBackColor = true;
             this.btnReadRecipes.Click += new System.EventHandler(this.btnReadRecipes_Click);
             // 
-            // btnImportSlot1
+            // btnImportRecipeSlot1
             // 
-            this.btnImportSlot1.Location = new System.Drawing.Point(45, 41);
-            this.btnImportSlot1.Name = "btnImportSlot1";
-            this.btnImportSlot1.Size = new System.Drawing.Size(75, 23);
-            this.btnImportSlot1.TabIndex = 6;
-            this.btnImportSlot1.Text = "Import";
-            this.btnImportSlot1.UseVisualStyleBackColor = true;
-            this.btnImportSlot1.Click += new System.EventHandler(this.btnImportSlot1_Click);
+            this.btnImportRecipeSlot1.Enabled = false;
+            this.btnImportRecipeSlot1.Location = new System.Drawing.Point(48, 66);
+            this.btnImportRecipeSlot1.Name = "btnImportRecipeSlot1";
+            this.btnImportRecipeSlot1.Size = new System.Drawing.Size(75, 23);
+            this.btnImportRecipeSlot1.TabIndex = 6;
+            this.btnImportRecipeSlot1.Text = "Import";
+            this.btnImportRecipeSlot1.UseVisualStyleBackColor = true;
+            this.btnImportRecipeSlot1.Click += new System.EventHandler(this.btnImportSlot1_Click);
             // 
-            // btnExportSlot1
+            // btnExportRecipeSlot1
             // 
-            this.btnExportSlot1.Location = new System.Drawing.Point(126, 41);
-            this.btnExportSlot1.Name = "btnExportSlot1";
-            this.btnExportSlot1.Size = new System.Drawing.Size(75, 23);
-            this.btnExportSlot1.TabIndex = 7;
-            this.btnExportSlot1.Text = "Export";
-            this.btnExportSlot1.UseVisualStyleBackColor = true;
-            this.btnExportSlot1.Click += new System.EventHandler(this.btnExportSlot1_Click);
+            this.btnExportRecipeSlot1.Enabled = false;
+            this.btnExportRecipeSlot1.Location = new System.Drawing.Point(129, 66);
+            this.btnExportRecipeSlot1.Name = "btnExportRecipeSlot1";
+            this.btnExportRecipeSlot1.Size = new System.Drawing.Size(75, 23);
+            this.btnExportRecipeSlot1.TabIndex = 7;
+            this.btnExportRecipeSlot1.Text = "Export";
+            this.btnExportRecipeSlot1.UseVisualStyleBackColor = true;
+            this.btnExportRecipeSlot1.Click += new System.EventHandler(this.btnExportSlot1_Click);
             // 
-            // btnExportSlot2
+            // btnExportRecipeSlot2
             // 
-            this.btnExportSlot2.Location = new System.Drawing.Point(126, 67);
-            this.btnExportSlot2.Name = "btnExportSlot2";
-            this.btnExportSlot2.Size = new System.Drawing.Size(75, 23);
-            this.btnExportSlot2.TabIndex = 9;
-            this.btnExportSlot2.Text = "Export";
-            this.btnExportSlot2.UseVisualStyleBackColor = true;
-            this.btnExportSlot2.Click += new System.EventHandler(this.btnExportSlot2_Click);
+            this.btnExportRecipeSlot2.Enabled = false;
+            this.btnExportRecipeSlot2.Location = new System.Drawing.Point(129, 92);
+            this.btnExportRecipeSlot2.Name = "btnExportRecipeSlot2";
+            this.btnExportRecipeSlot2.Size = new System.Drawing.Size(75, 23);
+            this.btnExportRecipeSlot2.TabIndex = 9;
+            this.btnExportRecipeSlot2.Text = "Export";
+            this.btnExportRecipeSlot2.UseVisualStyleBackColor = true;
+            this.btnExportRecipeSlot2.Click += new System.EventHandler(this.btnExportSlot2_Click);
             // 
-            // btnImportSlot2
+            // btnImportRecipeSlot2
             // 
-            this.btnImportSlot2.Location = new System.Drawing.Point(45, 67);
-            this.btnImportSlot2.Name = "btnImportSlot2";
-            this.btnImportSlot2.Size = new System.Drawing.Size(75, 23);
-            this.btnImportSlot2.TabIndex = 8;
-            this.btnImportSlot2.Text = "Import";
-            this.btnImportSlot2.UseVisualStyleBackColor = true;
-            this.btnImportSlot2.Click += new System.EventHandler(this.btnImportSlot2_Click);
+            this.btnImportRecipeSlot2.Enabled = false;
+            this.btnImportRecipeSlot2.Location = new System.Drawing.Point(48, 92);
+            this.btnImportRecipeSlot2.Name = "btnImportRecipeSlot2";
+            this.btnImportRecipeSlot2.Size = new System.Drawing.Size(75, 23);
+            this.btnImportRecipeSlot2.TabIndex = 8;
+            this.btnImportRecipeSlot2.Text = "Import";
+            this.btnImportRecipeSlot2.UseVisualStyleBackColor = true;
+            this.btnImportRecipeSlot2.Click += new System.EventHandler(this.btnImportSlot2_Click);
             // 
-            // btnExportSlot3
+            // btnExportRecipeSlot3
             // 
-            this.btnExportSlot3.Location = new System.Drawing.Point(126, 93);
-            this.btnExportSlot3.Name = "btnExportSlot3";
-            this.btnExportSlot3.Size = new System.Drawing.Size(75, 23);
-            this.btnExportSlot3.TabIndex = 11;
-            this.btnExportSlot3.Text = "Export";
-            this.btnExportSlot3.UseVisualStyleBackColor = true;
-            this.btnExportSlot3.Click += new System.EventHandler(this.btnExportSlot3_Click);
+            this.btnExportRecipeSlot3.Enabled = false;
+            this.btnExportRecipeSlot3.Location = new System.Drawing.Point(129, 118);
+            this.btnExportRecipeSlot3.Name = "btnExportRecipeSlot3";
+            this.btnExportRecipeSlot3.Size = new System.Drawing.Size(75, 23);
+            this.btnExportRecipeSlot3.TabIndex = 11;
+            this.btnExportRecipeSlot3.Text = "Export";
+            this.btnExportRecipeSlot3.UseVisualStyleBackColor = true;
+            this.btnExportRecipeSlot3.Click += new System.EventHandler(this.btnExportSlot3_Click);
             // 
-            // btnImportSlot3
+            // btnImportRecipeSlot3
             // 
-            this.btnImportSlot3.Location = new System.Drawing.Point(45, 93);
-            this.btnImportSlot3.Name = "btnImportSlot3";
-            this.btnImportSlot3.Size = new System.Drawing.Size(75, 23);
-            this.btnImportSlot3.TabIndex = 10;
-            this.btnImportSlot3.Text = "Import";
-            this.btnImportSlot3.UseVisualStyleBackColor = true;
-            this.btnImportSlot3.Click += new System.EventHandler(this.btnImportSlot3_Click);
+            this.btnImportRecipeSlot3.Enabled = false;
+            this.btnImportRecipeSlot3.Location = new System.Drawing.Point(48, 118);
+            this.btnImportRecipeSlot3.Name = "btnImportRecipeSlot3";
+            this.btnImportRecipeSlot3.Size = new System.Drawing.Size(75, 23);
+            this.btnImportRecipeSlot3.TabIndex = 10;
+            this.btnImportRecipeSlot3.Text = "Import";
+            this.btnImportRecipeSlot3.UseVisualStyleBackColor = true;
+            this.btnImportRecipeSlot3.Click += new System.EventHandler(this.btnImportSlot3_Click);
             // 
-            // btnExportSlot4
+            // btnExportRecipeSlot4
             // 
-            this.btnExportSlot4.Location = new System.Drawing.Point(126, 119);
-            this.btnExportSlot4.Name = "btnExportSlot4";
-            this.btnExportSlot4.Size = new System.Drawing.Size(75, 23);
-            this.btnExportSlot4.TabIndex = 13;
-            this.btnExportSlot4.Text = "Export";
-            this.btnExportSlot4.UseVisualStyleBackColor = true;
-            this.btnExportSlot4.Click += new System.EventHandler(this.btnExportSlot4_Click);
+            this.btnExportRecipeSlot4.Enabled = false;
+            this.btnExportRecipeSlot4.Location = new System.Drawing.Point(129, 144);
+            this.btnExportRecipeSlot4.Name = "btnExportRecipeSlot4";
+            this.btnExportRecipeSlot4.Size = new System.Drawing.Size(75, 23);
+            this.btnExportRecipeSlot4.TabIndex = 13;
+            this.btnExportRecipeSlot4.Text = "Export";
+            this.btnExportRecipeSlot4.UseVisualStyleBackColor = true;
+            this.btnExportRecipeSlot4.Click += new System.EventHandler(this.btnExportSlot4_Click);
             // 
-            // btnImportSlot4
+            // btnImportRecipeSlot4
             // 
-            this.btnImportSlot4.Location = new System.Drawing.Point(45, 119);
-            this.btnImportSlot4.Name = "btnImportSlot4";
-            this.btnImportSlot4.Size = new System.Drawing.Size(75, 23);
-            this.btnImportSlot4.TabIndex = 12;
-            this.btnImportSlot4.Text = "Import";
-            this.btnImportSlot4.UseVisualStyleBackColor = true;
-            this.btnImportSlot4.Click += new System.EventHandler(this.btnImportSlot4_Click);
+            this.btnImportRecipeSlot4.Enabled = false;
+            this.btnImportRecipeSlot4.Location = new System.Drawing.Point(48, 144);
+            this.btnImportRecipeSlot4.Name = "btnImportRecipeSlot4";
+            this.btnImportRecipeSlot4.Size = new System.Drawing.Size(75, 23);
+            this.btnImportRecipeSlot4.TabIndex = 12;
+            this.btnImportRecipeSlot4.Text = "Import";
+            this.btnImportRecipeSlot4.UseVisualStyleBackColor = true;
+            this.btnImportRecipeSlot4.Click += new System.EventHandler(this.btnImportSlot4_Click);
             // 
-            // btnExportSlot5
+            // btnExportRecipeSlot5
             // 
-            this.btnExportSlot5.Location = new System.Drawing.Point(126, 145);
-            this.btnExportSlot5.Name = "btnExportSlot5";
-            this.btnExportSlot5.Size = new System.Drawing.Size(75, 23);
-            this.btnExportSlot5.TabIndex = 15;
-            this.btnExportSlot5.Text = "Export";
-            this.btnExportSlot5.UseVisualStyleBackColor = true;
-            this.btnExportSlot5.Click += new System.EventHandler(this.btnExportSlot5_Click);
+            this.btnExportRecipeSlot5.Enabled = false;
+            this.btnExportRecipeSlot5.Location = new System.Drawing.Point(129, 170);
+            this.btnExportRecipeSlot5.Name = "btnExportRecipeSlot5";
+            this.btnExportRecipeSlot5.Size = new System.Drawing.Size(75, 23);
+            this.btnExportRecipeSlot5.TabIndex = 15;
+            this.btnExportRecipeSlot5.Text = "Export";
+            this.btnExportRecipeSlot5.UseVisualStyleBackColor = true;
+            this.btnExportRecipeSlot5.Click += new System.EventHandler(this.btnExportSlot5_Click);
             // 
-            // btnImportSlot5
+            // btnImportRecipeSlot5
             // 
-            this.btnImportSlot5.Location = new System.Drawing.Point(45, 145);
-            this.btnImportSlot5.Name = "btnImportSlot5";
-            this.btnImportSlot5.Size = new System.Drawing.Size(75, 23);
-            this.btnImportSlot5.TabIndex = 14;
-            this.btnImportSlot5.Text = "Import";
-            this.btnImportSlot5.UseVisualStyleBackColor = true;
-            this.btnImportSlot5.Click += new System.EventHandler(this.btnImportSlot5_Click);
+            this.btnImportRecipeSlot5.Enabled = false;
+            this.btnImportRecipeSlot5.Location = new System.Drawing.Point(48, 170);
+            this.btnImportRecipeSlot5.Name = "btnImportRecipeSlot5";
+            this.btnImportRecipeSlot5.Size = new System.Drawing.Size(75, 23);
+            this.btnImportRecipeSlot5.TabIndex = 14;
+            this.btnImportRecipeSlot5.Text = "Import";
+            this.btnImportRecipeSlot5.UseVisualStyleBackColor = true;
+            this.btnImportRecipeSlot5.Click += new System.EventHandler(this.btnImportSlot5_Click);
             // 
             // lblCharacterSlot1
             // 
             this.lblCharacterSlot1.AutoSize = true;
-            this.lblCharacterSlot1.Location = new System.Drawing.Point(207, 46);
+            this.lblCharacterSlot1.Location = new System.Drawing.Point(210, 71);
             this.lblCharacterSlot1.Name = "lblCharacterSlot1";
             this.lblCharacterSlot1.Size = new System.Drawing.Size(53, 13);
             this.lblCharacterSlot1.TabIndex = 16;
@@ -220,7 +243,7 @@
             // lblCharacterSlot2
             // 
             this.lblCharacterSlot2.AutoSize = true;
-            this.lblCharacterSlot2.Location = new System.Drawing.Point(207, 72);
+            this.lblCharacterSlot2.Location = new System.Drawing.Point(210, 97);
             this.lblCharacterSlot2.Name = "lblCharacterSlot2";
             this.lblCharacterSlot2.Size = new System.Drawing.Size(53, 13);
             this.lblCharacterSlot2.TabIndex = 17;
@@ -229,7 +252,7 @@
             // lblCharacterSlot3
             // 
             this.lblCharacterSlot3.AutoSize = true;
-            this.lblCharacterSlot3.Location = new System.Drawing.Point(207, 98);
+            this.lblCharacterSlot3.Location = new System.Drawing.Point(210, 123);
             this.lblCharacterSlot3.Name = "lblCharacterSlot3";
             this.lblCharacterSlot3.Size = new System.Drawing.Size(53, 13);
             this.lblCharacterSlot3.TabIndex = 18;
@@ -238,7 +261,7 @@
             // lblCharacterSlot4
             // 
             this.lblCharacterSlot4.AutoSize = true;
-            this.lblCharacterSlot4.Location = new System.Drawing.Point(207, 124);
+            this.lblCharacterSlot4.Location = new System.Drawing.Point(210, 149);
             this.lblCharacterSlot4.Name = "lblCharacterSlot4";
             this.lblCharacterSlot4.Size = new System.Drawing.Size(53, 13);
             this.lblCharacterSlot4.TabIndex = 19;
@@ -247,7 +270,7 @@
             // lblCharacterSlot5
             // 
             this.lblCharacterSlot5.AutoSize = true;
-            this.lblCharacterSlot5.Location = new System.Drawing.Point(207, 150);
+            this.lblCharacterSlot5.Location = new System.Drawing.Point(210, 175);
             this.lblCharacterSlot5.Name = "lblCharacterSlot5";
             this.lblCharacterSlot5.Size = new System.Drawing.Size(53, 13);
             this.lblCharacterSlot5.TabIndex = 20;
@@ -255,7 +278,7 @@
             // 
             // btnOpenRecipeFolder
             // 
-            this.btnOpenRecipeFolder.Location = new System.Drawing.Point(177, 12);
+            this.btnOpenRecipeFolder.Location = new System.Drawing.Point(180, 37);
             this.btnOpenRecipeFolder.Name = "btnOpenRecipeFolder";
             this.btnOpenRecipeFolder.Size = new System.Drawing.Size(114, 23);
             this.btnOpenRecipeFolder.TabIndex = 21;
@@ -263,27 +286,169 @@
             this.btnOpenRecipeFolder.UseVisualStyleBackColor = true;
             this.btnOpenRecipeFolder.Click += new System.EventHandler(this.btnOpenRecipeFolder_Click);
             // 
+            // lblDivider
+            // 
+            this.lblDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblDivider.Location = new System.Drawing.Point(-11, 206);
+            this.lblDivider.Name = "lblDivider";
+            this.lblDivider.Size = new System.Drawing.Size(320, 2);
+            this.lblDivider.TabIndex = 22;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 216);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 13);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "Dummy Recordings";
+            // 
+            // btnExportDummySlot3
+            // 
+            this.btnExportDummySlot3.Enabled = false;
+            this.btnExportDummySlot3.Location = new System.Drawing.Point(133, 321);
+            this.btnExportDummySlot3.Name = "btnExportDummySlot3";
+            this.btnExportDummySlot3.Size = new System.Drawing.Size(75, 23);
+            this.btnExportDummySlot3.TabIndex = 33;
+            this.btnExportDummySlot3.Text = "Export";
+            this.btnExportDummySlot3.UseVisualStyleBackColor = true;
+            this.btnExportDummySlot3.Click += new System.EventHandler(this.btnExportDummySlot3_Click);
+            // 
+            // btnImportDummySlot3
+            // 
+            this.btnImportDummySlot3.Enabled = false;
+            this.btnImportDummySlot3.Location = new System.Drawing.Point(52, 321);
+            this.btnImportDummySlot3.Name = "btnImportDummySlot3";
+            this.btnImportDummySlot3.Size = new System.Drawing.Size(75, 23);
+            this.btnImportDummySlot3.TabIndex = 32;
+            this.btnImportDummySlot3.Text = "Import";
+            this.btnImportDummySlot3.UseVisualStyleBackColor = true;
+            this.btnImportDummySlot3.Click += new System.EventHandler(this.btnImportDummySlot3_Click);
+            // 
+            // btnExportDummySlot2
+            // 
+            this.btnExportDummySlot2.Enabled = false;
+            this.btnExportDummySlot2.Location = new System.Drawing.Point(133, 295);
+            this.btnExportDummySlot2.Name = "btnExportDummySlot2";
+            this.btnExportDummySlot2.Size = new System.Drawing.Size(75, 23);
+            this.btnExportDummySlot2.TabIndex = 31;
+            this.btnExportDummySlot2.Text = "Export";
+            this.btnExportDummySlot2.UseVisualStyleBackColor = true;
+            this.btnExportDummySlot2.Click += new System.EventHandler(this.btnExportDummySlot2_Click);
+            // 
+            // btnImportDummySlot2
+            // 
+            this.btnImportDummySlot2.Enabled = false;
+            this.btnImportDummySlot2.Location = new System.Drawing.Point(52, 295);
+            this.btnImportDummySlot2.Name = "btnImportDummySlot2";
+            this.btnImportDummySlot2.Size = new System.Drawing.Size(75, 23);
+            this.btnImportDummySlot2.TabIndex = 30;
+            this.btnImportDummySlot2.Text = "Import";
+            this.btnImportDummySlot2.UseVisualStyleBackColor = true;
+            this.btnImportDummySlot2.Click += new System.EventHandler(this.btnImportDummySlot2_Click);
+            // 
+            // btnExportDummySlot1
+            // 
+            this.btnExportDummySlot1.Enabled = false;
+            this.btnExportDummySlot1.Location = new System.Drawing.Point(133, 269);
+            this.btnExportDummySlot1.Name = "btnExportDummySlot1";
+            this.btnExportDummySlot1.Size = new System.Drawing.Size(75, 23);
+            this.btnExportDummySlot1.TabIndex = 29;
+            this.btnExportDummySlot1.Text = "Export";
+            this.btnExportDummySlot1.UseVisualStyleBackColor = true;
+            this.btnExportDummySlot1.Click += new System.EventHandler(this.btnExportDummySlot1_Click);
+            // 
+            // btnImportDummySlot1
+            // 
+            this.btnImportDummySlot1.Enabled = false;
+            this.btnImportDummySlot1.Location = new System.Drawing.Point(52, 269);
+            this.btnImportDummySlot1.Name = "btnImportDummySlot1";
+            this.btnImportDummySlot1.Size = new System.Drawing.Size(75, 23);
+            this.btnImportDummySlot1.TabIndex = 28;
+            this.btnImportDummySlot1.Text = "Import";
+            this.btnImportDummySlot1.UseVisualStyleBackColor = true;
+            this.btnImportDummySlot1.Click += new System.EventHandler(this.btnImportDummySlot1_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 326);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "Slot 3";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 300);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 13);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Slot 2";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 274);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Slot 1";
+            // 
+            // btnReadDummyRecordings
+            // 
+            this.btnReadDummyRecordings.Location = new System.Drawing.Point(52, 240);
+            this.btnReadDummyRecordings.Name = "btnReadDummyRecordings";
+            this.btnReadDummyRecordings.Size = new System.Drawing.Size(137, 23);
+            this.btnReadDummyRecordings.TabIndex = 34;
+            this.btnReadDummyRecordings.Text = "Read Dummy Recordings";
+            this.btnReadDummyRecordings.UseVisualStyleBackColor = true;
+            this.btnReadDummyRecordings.Click += new System.EventHandler(this.btnReadDummyRecordings_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 13);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Combo Recipes";
+            // 
             // RecipeManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 176);
+            this.ClientSize = new System.Drawing.Size(303, 359);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnReadDummyRecordings);
+            this.Controls.Add(this.btnExportDummySlot3);
+            this.Controls.Add(this.btnImportDummySlot3);
+            this.Controls.Add(this.btnExportDummySlot2);
+            this.Controls.Add(this.btnImportDummySlot2);
+            this.Controls.Add(this.btnExportDummySlot1);
+            this.Controls.Add(this.btnImportDummySlot1);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblDivider);
             this.Controls.Add(this.btnOpenRecipeFolder);
             this.Controls.Add(this.lblCharacterSlot5);
             this.Controls.Add(this.lblCharacterSlot4);
             this.Controls.Add(this.lblCharacterSlot3);
             this.Controls.Add(this.lblCharacterSlot2);
             this.Controls.Add(this.lblCharacterSlot1);
-            this.Controls.Add(this.btnExportSlot5);
-            this.Controls.Add(this.btnImportSlot5);
-            this.Controls.Add(this.btnExportSlot4);
-            this.Controls.Add(this.btnImportSlot4);
-            this.Controls.Add(this.btnExportSlot3);
-            this.Controls.Add(this.btnImportSlot3);
-            this.Controls.Add(this.btnExportSlot2);
-            this.Controls.Add(this.btnImportSlot2);
-            this.Controls.Add(this.btnExportSlot1);
-            this.Controls.Add(this.btnImportSlot1);
+            this.Controls.Add(this.btnExportRecipeSlot5);
+            this.Controls.Add(this.btnImportRecipeSlot5);
+            this.Controls.Add(this.btnExportRecipeSlot4);
+            this.Controls.Add(this.btnImportRecipeSlot4);
+            this.Controls.Add(this.btnExportRecipeSlot3);
+            this.Controls.Add(this.btnImportRecipeSlot3);
+            this.Controls.Add(this.btnExportRecipeSlot2);
+            this.Controls.Add(this.btnImportRecipeSlot2);
+            this.Controls.Add(this.btnExportRecipeSlot1);
+            this.Controls.Add(this.btnImportRecipeSlot1);
             this.Controls.Add(this.btnReadRecipes);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -308,22 +473,35 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnReadRecipes;
-        private System.Windows.Forms.Button btnImportSlot1;
-        private System.Windows.Forms.Button btnExportSlot1;
-        private System.Windows.Forms.Button btnExportSlot2;
-        private System.Windows.Forms.Button btnImportSlot2;
-        private System.Windows.Forms.Button btnExportSlot3;
-        private System.Windows.Forms.Button btnImportSlot3;
-        private System.Windows.Forms.Button btnExportSlot4;
-        private System.Windows.Forms.Button btnImportSlot4;
-        private System.Windows.Forms.Button btnExportSlot5;
-        private System.Windows.Forms.Button btnImportSlot5;
+        private System.Windows.Forms.Button btnImportRecipeSlot1;
+        private System.Windows.Forms.Button btnExportRecipeSlot1;
+        private System.Windows.Forms.Button btnExportRecipeSlot2;
+        private System.Windows.Forms.Button btnImportRecipeSlot2;
+        private System.Windows.Forms.Button btnExportRecipeSlot3;
+        private System.Windows.Forms.Button btnImportRecipeSlot3;
+        private System.Windows.Forms.Button btnExportRecipeSlot4;
+        private System.Windows.Forms.Button btnImportRecipeSlot4;
+        private System.Windows.Forms.Button btnExportRecipeSlot5;
+        private System.Windows.Forms.Button btnImportRecipeSlot5;
         private System.Windows.Forms.Label lblCharacterSlot1;
         private System.Windows.Forms.Label lblCharacterSlot2;
         private System.Windows.Forms.Label lblCharacterSlot3;
         private System.Windows.Forms.Label lblCharacterSlot4;
         private System.Windows.Forms.Label lblCharacterSlot5;
         private System.Windows.Forms.Button btnOpenRecipeFolder;
+        private System.Windows.Forms.Label lblDivider;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnExportDummySlot3;
+        private System.Windows.Forms.Button btnImportDummySlot3;
+        private System.Windows.Forms.Button btnExportDummySlot2;
+        private System.Windows.Forms.Button btnImportDummySlot2;
+        private System.Windows.Forms.Button btnExportDummySlot1;
+        private System.Windows.Forms.Button btnImportDummySlot1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnReadDummyRecordings;
+        private System.Windows.Forms.Label label6;
     }
 }
 

@@ -10,7 +10,7 @@ namespace GGRev2ComboRecipeManager.Lib
 
         public static ComboRecipe[] ReadComboRecipes()
         {
-            var comboRecipeData = new byte[SLOT_DATA_SIZE * 5];
+            var comboRecipeData = ProcessMemoryManager.ReadProcessMemory(PROCESS_NAME, SLOT1_OFFSET_POINTER, SLOT_DATA_SIZE * 5, true);
 
             var combo1 = new ComboRecipe(comboRecipeData, 0);
             var combo2 = new ComboRecipe(comboRecipeData, 1);
@@ -23,9 +23,9 @@ namespace GGRev2ComboRecipeManager.Lib
 
         public static ComboRecipe ReadComboRecipe(int slotNr)
         {
-            var data = ProcessMemoryManager.ReadProcessMemory(PROCESS_NAME, SLOT1_OFFSET_POINTER, SLOT_DATA_SIZE, true);
+            var data = ProcessMemoryManager.ReadProcessMemory(PROCESS_NAME, SLOT1_OFFSET_POINTER, SLOT_DATA_SIZE, true, slotNr * SLOT_DATA_SIZE);
 
-            return data != null ? new ComboRecipe(data, slotNr) : null;
+            return data != null ? new ComboRecipe(data) : null;
         }
 
         public static void WriteRecipe(ComboRecipe recipe, int slotNr = 0)

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GGRev2ComboRecipeManager.Lib
 {
@@ -23,7 +20,7 @@ namespace GGRev2ComboRecipeManager.Lib
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern bool WriteProcessMemory(int hProcess, int lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesWritten);
 
-        public static byte[] ReadProcessMemory(string processName, int dataOffset, int length, bool offsetIsPointer)
+        public static byte[] ReadProcessMemory(string processName, int dataOffset, int length, bool offsetIsPointer, int additionalOffset = 0)
         {
             var processes = Process.GetProcessesByName("GuiltyGearXrd");
             if (processes.Length < 1)
@@ -39,7 +36,7 @@ namespace GGRev2ComboRecipeManager.Lib
 
             var offset = offsetIsPointer ? GetOffsetFromPointer(process, dataOffset) : dataOffset;
 
-            ReadProcessMemory((int)processHandle, offset, data, data.Length, ref bytesRead);
+            ReadProcessMemory((int)processHandle, offset + additionalOffset, data, data.Length, ref bytesRead);
 
             return data;
         }
