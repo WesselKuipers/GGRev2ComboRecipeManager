@@ -4,15 +4,23 @@ Update 2.02 of GG Rev2 added the option to record and store 'combo recipes' whic
 This tool allows you to export and import combo recipes stored in slots 1 through 5. Recipes are stored in `1028kB` sized files, containing information about which character the combo is for and room for up to 31 moves.
 
 ## How to use
-0. Make sure you **unzipped** the tool and put it in a location that has read/write access.
-1. Make sure Guilty Gear Xrd Rev2 is running.
-2. Press the `Read Combo Recipes` button to read the currently stored combos.
-3. If all went well, the import and export buttons will be enabled and the character names for your currently saved combos will be displayed.
-4. Record your combo.
-5. Save your combo to one of the slots
-6. Hit `Read Combo Recipes` again to refresh the currently stored combo recipes
-7. Press the `Export` button next to the corresponding slot to export the combo file, resulting in a `.ggcr` file
-8. Press the `Import` button next to a slot to import a combo from a `.ggcr` file
+Make sure you **unzipped** the tool and put it in a location that has read/write access.
+Make sure Guilty Gear Xrd Rev2 is running.
+
+**Combo Recipes**
+1. Press the `Read Combo Recipes` button to read the currently stored combos. If all went well, the import and export buttons will be enabled and the character names for your currently saved combos will be displayed.
+3. Record your combo.
+4. Save your combo to one of the slots
+5. Hit `Read Combo Recipes` again to refresh the currently stored combo recipes
+6. Press the `Export` button next to the corresponding slot to export the combo file, resulting in a `.ggcr` file
+7. Press the `Import` button next to a slot to import a combo from a `.ggcr` file.
+
+**Dummy Recordings**
+1. Press the `Read Dummy Recordings` button to read the currently stored dummy recordings.
+2. Record your dummy and note which slot you selected
+3. Hit `Read Dummy Recordings` again to refresh the currently stored combo recipes.
+4. Press the `Export` button next to the corresponding slot to export the dummy recording, resulting in a `.ggdr` file.
+5. Press the `Import` button next to a slot to import a dummy recording from a `.ggdr` file.
 
 ## Download
 The latest release can be found [here](https://github.com/WesselKuipers/GGRev2ComboRecipeManager/releases).
