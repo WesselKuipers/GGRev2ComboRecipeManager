@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace GGRev2ComboRecipeManager.Lib
+namespace GGRev2ComboRecipeManager.Lib.Extensions
 {
     public static class ByteArrayExtensions
     {

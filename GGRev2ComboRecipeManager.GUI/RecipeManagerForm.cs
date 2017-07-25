@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using GGRev2ComboRecipeManager.Lib;
+using GGRev2ComboRecipeManager.Lib.Models;
 
 namespace GGRev2ComboRecipeManager.GUI
 {
@@ -173,7 +174,7 @@ namespace GGRev2ComboRecipeManager.GUI
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 var data = File.ReadAllBytes(ofd.FileName);
-                if (data.Length != ComboRecipeManager.SLOT_DATA_SIZE)
+                if (data.Length != ComboRecipe.SLOT_DATA_SIZE)
                 {
                     MessageBox.Show("Invalid size for GGCR file");
                     return null;

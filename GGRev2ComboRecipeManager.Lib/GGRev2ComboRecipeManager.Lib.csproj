@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ByteArrayExtensions.cs" />
-    <Compile Include="ComboRecipe.cs" />
+    <Compile Include="Extensions\ByteArrayExtensions.cs" />
+    <Compile Include="Models\ComboRecipe.cs" />
     <Compile Include="ComboRecipeManager.cs" />
+    <Compile Include="Models\DummyRecording.cs" />
+    <Compile Include="ProcessMemoryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

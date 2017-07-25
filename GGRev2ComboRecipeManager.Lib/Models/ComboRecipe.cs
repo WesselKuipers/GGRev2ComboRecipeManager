@@ -1,18 +1,15 @@
 ﻿using System;
-using static GGRev2ComboRecipeManager.Lib.ComboRecipeManager;
+using GGRev2ComboRecipeManager.Lib.Extensions;
 
-namespace GGRev2ComboRecipeManager.Lib
+namespace GGRev2ComboRecipeManager.Lib.Models
 {
     public class ComboRecipe
     {
+        public const int SLOT_CHARCODE_SIZE = 4;
+        public const int SLOT_DATA_SIZE = 1028;
+
         public CharacterCode CharacterCode;
         public byte[] MoveData = new byte[SLOT_DATA_SIZE - SLOT_CHARCODE_SIZE];
-
-        public ComboRecipe(int characterCode, byte[] moveData)
-        {
-            CharacterCode = (CharacterCode) characterCode;
-            MoveData = moveData;
-        }
 
         public ComboRecipe(byte[] comboData, int slotNr = 0)
         {
