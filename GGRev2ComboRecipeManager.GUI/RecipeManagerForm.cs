@@ -133,6 +133,31 @@ namespace GGRev2ComboRecipeManager.GUI
             ExportDummyRecording(2);
         }
 
+        private void btnClearDummySlot1_Click(object sender, EventArgs e)
+        {
+            ClearDummyRecordingData(0);
+        }
+
+        private void btnClearDummySlot2_Click(object sender, EventArgs e)
+        {
+            ClearDummyRecordingData(1);
+        }
+
+        private void btnClearDummySlot3_Click(object sender, EventArgs e)
+        {
+            ClearDummyRecordingData(2);
+        }
+
+        private void btnOpenRecipeFolder_Click(object sender, EventArgs e)
+        {
+            Process.Start(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes"));
+        }
+
+        private void btnOpenRecordingFolder_Click(object sender, EventArgs e)
+        {
+            Process.Start(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recordings"));
+        }
+
         private void btnReadRecipes_Click(object sender, EventArgs e)
         {
             var recipes = ComboRecipeManager.ReadComboRecipes();
@@ -214,9 +239,10 @@ namespace GGRev2ComboRecipeManager.GUI
             return null;
         }
 
-        private void btnOpenRecipeFolder_Click(object sender, EventArgs e)
+        private void ClearDummyRecordingData(int slotNr)
         {
-            Process.Start(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes"));
+            var emptyRecording = new DummyRecording(new byte[DummyRecording.DUMMYRECORDING_SIZE]);
+            DummyRecordingManager.WriteDummyRecording(emptyRecording, slotNr);
         }
 
         private DummyRecording ImportDummyRecording(int slotNr)

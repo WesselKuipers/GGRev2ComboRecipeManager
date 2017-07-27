@@ -64,6 +64,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnReadDummyRecordings = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnClearDummySlot1 = new System.Windows.Forms.Button();
+            this.btnClearDummySlot2 = new System.Windows.Forms.Button();
+            this.btnClearDummySlot3 = new System.Windows.Forms.Button();
+            this.btnOpenRecordingFolder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -278,7 +282,7 @@
             // 
             // btnOpenRecipeFolder
             // 
-            this.btnOpenRecipeFolder.Location = new System.Drawing.Point(180, 37);
+            this.btnOpenRecipeFolder.Location = new System.Drawing.Point(201, 9);
             this.btnOpenRecipeFolder.Name = "btnOpenRecipeFolder";
             this.btnOpenRecipeFolder.Size = new System.Drawing.Size(114, 23);
             this.btnOpenRecipeFolder.TabIndex = 21;
@@ -415,11 +419,61 @@
             this.label6.TabIndex = 35;
             this.label6.Text = "Combo Recipes";
             // 
+            // btnClearDummySlot1
+            // 
+            this.btnClearDummySlot1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearDummySlot1.Location = new System.Drawing.Point(213, 269);
+            this.btnClearDummySlot1.Name = "btnClearDummySlot1";
+            this.btnClearDummySlot1.Size = new System.Drawing.Size(23, 23);
+            this.btnClearDummySlot1.TabIndex = 36;
+            this.btnClearDummySlot1.Text = "×";
+            this.btnClearDummySlot1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnClearDummySlot1.UseVisualStyleBackColor = true;
+            this.btnClearDummySlot1.Click += new System.EventHandler(this.btnClearDummySlot1_Click);
+            // 
+            // btnClearDummySlot2
+            // 
+            this.btnClearDummySlot2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearDummySlot2.Location = new System.Drawing.Point(213, 295);
+            this.btnClearDummySlot2.Name = "btnClearDummySlot2";
+            this.btnClearDummySlot2.Size = new System.Drawing.Size(23, 23);
+            this.btnClearDummySlot2.TabIndex = 37;
+            this.btnClearDummySlot2.Text = "×";
+            this.btnClearDummySlot2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnClearDummySlot2.UseVisualStyleBackColor = true;
+            this.btnClearDummySlot2.Click += new System.EventHandler(this.btnClearDummySlot2_Click);
+            // 
+            // btnClearDummySlot3
+            // 
+            this.btnClearDummySlot3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearDummySlot3.Location = new System.Drawing.Point(213, 321);
+            this.btnClearDummySlot3.Name = "btnClearDummySlot3";
+            this.btnClearDummySlot3.Size = new System.Drawing.Size(23, 23);
+            this.btnClearDummySlot3.TabIndex = 38;
+            this.btnClearDummySlot3.Text = "×";
+            this.btnClearDummySlot3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnClearDummySlot3.UseVisualStyleBackColor = true;
+            this.btnClearDummySlot3.Click += new System.EventHandler(this.btnClearDummySlot3_Click);
+            // 
+            // btnOpenRecordingFolder
+            // 
+            this.btnOpenRecordingFolder.Location = new System.Drawing.Point(189, 216);
+            this.btnOpenRecordingFolder.Name = "btnOpenRecordingFolder";
+            this.btnOpenRecordingFolder.Size = new System.Drawing.Size(126, 23);
+            this.btnOpenRecordingFolder.TabIndex = 39;
+            this.btnOpenRecordingFolder.Text = "Open Recording Folder";
+            this.btnOpenRecordingFolder.UseVisualStyleBackColor = true;
+            this.btnOpenRecordingFolder.Click += new System.EventHandler(this.btnOpenRecordingFolder_Click);
+            // 
             // RecipeManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 359);
+            this.ClientSize = new System.Drawing.Size(327, 359);
+            this.Controls.Add(this.btnOpenRecordingFolder);
+            this.Controls.Add(this.btnClearDummySlot3);
+            this.Controls.Add(this.btnClearDummySlot2);
+            this.Controls.Add(this.btnClearDummySlot1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnReadDummyRecordings);
             this.Controls.Add(this.btnExportDummySlot3);
@@ -502,6 +556,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnReadDummyRecordings;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnClearDummySlot1;
+        private System.Windows.Forms.Button btnClearDummySlot2;
+        private System.Windows.Forms.Button btnClearDummySlot3;
+        private System.Windows.Forms.Button btnOpenRecordingFolder;
     }
 }
 
