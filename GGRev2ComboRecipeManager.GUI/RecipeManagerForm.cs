@@ -180,11 +180,17 @@ namespace GGRev2ComboRecipeManager.GUI
             lblCharacterSlot4.Text = characterNames[3];
             lblCharacterSlot5.Text = characterNames[4];
 
-            btnExportRecipeSlot1.Enabled = btnImportRecipeSlot1.Enabled = ComboRecipes[0].CharacterCode != CharacterCode.Unknown;
-            btnExportRecipeSlot2.Enabled = btnImportRecipeSlot2.Enabled = ComboRecipes[1].CharacterCode != CharacterCode.Unknown;
-            btnExportRecipeSlot3.Enabled = btnImportRecipeSlot3.Enabled = ComboRecipes[2].CharacterCode != CharacterCode.Unknown;
-            btnExportRecipeSlot4.Enabled = btnImportRecipeSlot4.Enabled = ComboRecipes[3].CharacterCode != CharacterCode.Unknown;
-            btnExportRecipeSlot5.Enabled = btnImportRecipeSlot5.Enabled = ComboRecipes[4].CharacterCode != CharacterCode.Unknown;
+            btnImportRecipeSlot1.Enabled = true;
+            btnImportRecipeSlot2.Enabled = true;
+            btnImportRecipeSlot3.Enabled = true;
+            btnImportRecipeSlot4.Enabled = true;
+            btnImportRecipeSlot5.Enabled = true;
+
+            btnExportRecipeSlot1.Enabled = ComboRecipes[0].CharacterCode != CharacterCode.Unknown;
+            btnExportRecipeSlot2.Enabled = ComboRecipes[1].CharacterCode != CharacterCode.Unknown;
+            btnExportRecipeSlot3.Enabled = ComboRecipes[2].CharacterCode != CharacterCode.Unknown;
+            btnExportRecipeSlot4.Enabled = ComboRecipes[3].CharacterCode != CharacterCode.Unknown;
+            btnExportRecipeSlot5.Enabled = ComboRecipes[4].CharacterCode != CharacterCode.Unknown;
         }
 
         private void ExportComboRecipe(int slotNr)
@@ -309,9 +315,13 @@ namespace GGRev2ComboRecipeManager.GUI
 
             DummyRecordings = recordings.ToList();
 
-            btnExportDummySlot1.Enabled = btnImportDummySlot1.Enabled = DummyRecordings[0].RecordingData[4] > 0;
-            btnExportDummySlot2.Enabled = btnImportDummySlot2.Enabled = DummyRecordings[1].RecordingData[4] > 0;
-            btnExportDummySlot3.Enabled = btnImportDummySlot3.Enabled = DummyRecordings[2].RecordingData[4] > 0;
+            btnImportDummySlot1.Enabled = true;
+            btnImportDummySlot2.Enabled = true;
+            btnImportDummySlot3.Enabled = true;
+
+            btnExportDummySlot1.Enabled = DummyRecordings[0].RecordingData[4] > 0;
+            btnExportDummySlot2.Enabled = DummyRecordings[1].RecordingData[4] > 0;
+            btnExportDummySlot3.Enabled = DummyRecordings[2].RecordingData[4] > 0;
         }
     }
 }
