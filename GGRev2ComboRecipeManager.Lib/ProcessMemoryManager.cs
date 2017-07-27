@@ -22,7 +22,7 @@ namespace GGRev2ComboRecipeManager.Lib
 
         public static byte[] ReadProcessMemory(string processName, int dataOffset, int length, bool offsetIsPointer, int additionalOffset = 0)
         {
-            var processes = Process.GetProcessesByName("GuiltyGearXrd");
+            var processes = Process.GetProcessesByName(processName);
             if (processes.Length < 1)
             {
                 return null;
@@ -43,7 +43,7 @@ namespace GGRev2ComboRecipeManager.Lib
 
         public static void WriteProcessMemory(string processName, int dataOffset, byte[] data, bool offsetIsPointer, int additionalOffset = 0)
         {
-            var process = Process.GetProcessesByName("GuiltyGearXrd")?[0];
+            var process = Process.GetProcessesByName(processName)?[0];
             if (process == null)
             {
                 return;
