@@ -277,16 +277,15 @@ namespace GGRev2ComboRecipeManager.GUI
 
             if (recordings == null)
             {
-                MessageBox.Show("Unable to read Dummy REcording data.");
+                MessageBox.Show("Unable to read Dummy Recording data.");
                 return;
             }
 
             DummyRecordings = recordings.ToList();
 
-            // TODO: Figure out what can be used to determine a valid exportable dummy recording
-            btnExportDummySlot1.Enabled = btnImportDummySlot1.Enabled = DummyRecordings[0].RecordingData[0] > 0;
-            btnExportDummySlot2.Enabled = btnImportDummySlot2.Enabled = DummyRecordings[1].RecordingData[0] > 0;
-            btnExportDummySlot3.Enabled = btnImportDummySlot3.Enabled = DummyRecordings[2].RecordingData[0] > 0;
+            btnExportDummySlot1.Enabled = btnImportDummySlot1.Enabled = DummyRecordings[0].RecordingData[4] > 0;
+            btnExportDummySlot2.Enabled = btnImportDummySlot2.Enabled = DummyRecordings[1].RecordingData[4] > 0;
+            btnExportDummySlot3.Enabled = btnImportDummySlot3.Enabled = DummyRecordings[2].RecordingData[4] > 0;
         }
     }
 }
