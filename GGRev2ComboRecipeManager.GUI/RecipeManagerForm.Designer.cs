@@ -421,6 +421,7 @@
             // 
             // btnClearDummySlot1
             // 
+            this.btnClearDummySlot1.Enabled = false;
             this.btnClearDummySlot1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearDummySlot1.Location = new System.Drawing.Point(213, 269);
             this.btnClearDummySlot1.Name = "btnClearDummySlot1";
@@ -433,6 +434,7 @@
             // 
             // btnClearDummySlot2
             // 
+            this.btnClearDummySlot2.Enabled = false;
             this.btnClearDummySlot2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearDummySlot2.Location = new System.Drawing.Point(213, 295);
             this.btnClearDummySlot2.Name = "btnClearDummySlot2";
@@ -445,6 +447,7 @@
             // 
             // btnClearDummySlot3
             // 
+            this.btnClearDummySlot3.Enabled = false;
             this.btnClearDummySlot3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearDummySlot3.Location = new System.Drawing.Point(213, 321);
             this.btnClearDummySlot3.Name = "btnClearDummySlot3";

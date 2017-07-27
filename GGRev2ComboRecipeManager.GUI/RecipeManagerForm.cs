@@ -136,16 +136,19 @@ namespace GGRev2ComboRecipeManager.GUI
         private void btnClearDummySlot1_Click(object sender, EventArgs e)
         {
             ClearDummyRecordingData(0);
+            btnExportDummySlot1.Enabled = false;
         }
 
         private void btnClearDummySlot2_Click(object sender, EventArgs e)
         {
             ClearDummyRecordingData(1);
+            btnExportDummySlot2.Enabled = false;
         }
 
         private void btnClearDummySlot3_Click(object sender, EventArgs e)
         {
             ClearDummyRecordingData(2);
+            btnExportDummySlot3.Enabled = false;
         }
 
         private void btnOpenRecipeFolder_Click(object sender, EventArgs e)
@@ -185,6 +188,10 @@ namespace GGRev2ComboRecipeManager.GUI
             btnImportRecipeSlot3.Enabled = true;
             btnImportRecipeSlot4.Enabled = true;
             btnImportRecipeSlot5.Enabled = true;
+
+            btnClearDummySlot1.Enabled = true;
+            btnClearDummySlot2.Enabled = true;
+            btnClearDummySlot3.Enabled = true;
 
             btnExportRecipeSlot1.Enabled = ComboRecipes[0].CharacterCode != CharacterCode.Unknown;
             btnExportRecipeSlot2.Enabled = ComboRecipes[1].CharacterCode != CharacterCode.Unknown;
