@@ -189,10 +189,6 @@ namespace GGRev2ComboRecipeManager.GUI
             btnImportRecipeSlot4.Enabled = true;
             btnImportRecipeSlot5.Enabled = true;
 
-            btnClearDummySlot1.Enabled = true;
-            btnClearDummySlot2.Enabled = true;
-            btnClearDummySlot3.Enabled = true;
-
             btnExportRecipeSlot1.Enabled = ComboRecipes[0].CharacterCode != CharacterCode.Unknown;
             btnExportRecipeSlot2.Enabled = ComboRecipes[1].CharacterCode != CharacterCode.Unknown;
             btnExportRecipeSlot3.Enabled = ComboRecipes[2].CharacterCode != CharacterCode.Unknown;
@@ -230,8 +226,7 @@ namespace GGRev2ComboRecipeManager.GUI
             var ofd = new OpenFileDialog
             {
                 Filter = "Guilty Gear Combo Recipe|*.ggcr",
-                InitialDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes"),
-                RestoreDirectory = true
+                InitialDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes")
             };
 
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -268,8 +263,7 @@ namespace GGRev2ComboRecipeManager.GUI
             var ofd = new OpenFileDialog
             {
                 Filter = "Guilty Gear Dummy Recording|*.ggdr",
-                InitialDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recordings"),
-                RestoreDirectory = true
+                InitialDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recordings")
             };
 
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -299,7 +293,7 @@ namespace GGRev2ComboRecipeManager.GUI
 
             var sfd = new SaveFileDialog
             {
-                Filter = "Guilty Gear Combo Recipe|*.ggdr",
+                Filter = "Guilty Gear Dummy Recording|*.ggdr",
                 FileName = $"Combo{slotNr + 1}.ggdr",
                 InitialDirectory = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recordings")
             };
@@ -329,6 +323,10 @@ namespace GGRev2ComboRecipeManager.GUI
             btnExportDummySlot1.Enabled = DummyRecordings[0].RecordingData[4] > 0;
             btnExportDummySlot2.Enabled = DummyRecordings[1].RecordingData[4] > 0;
             btnExportDummySlot3.Enabled = DummyRecordings[2].RecordingData[4] > 0;
+
+            btnClearDummySlot1.Enabled = true;
+            btnClearDummySlot2.Enabled = true;
+            btnClearDummySlot3.Enabled = true;
         }
     }
 }
