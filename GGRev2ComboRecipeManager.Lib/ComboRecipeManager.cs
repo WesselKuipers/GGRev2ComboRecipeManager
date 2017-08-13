@@ -5,7 +5,7 @@ namespace GGRev2ComboRecipeManager.Lib
 {
     public class ComboRecipeManager
     {
-        const int SLOT1_OFFSET_POINTER = 0x00BD40A4;
+        const int SLOT1_OFFSET_POINTER = 0x00BD4B94;
         const string PROCESS_NAME = "GuiltyGearXrd";
 
         public static ComboRecipe[] ReadComboRecipes()
