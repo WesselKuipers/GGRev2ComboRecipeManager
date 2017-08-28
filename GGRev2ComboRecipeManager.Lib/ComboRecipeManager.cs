@@ -1,38 +1,50 @@
-﻿using GGRev2ComboRecipeManager.Lib.Models;
+﻿using System;
+using Binarysharp.MemoryManagement;
+using GGRev2ComboRecipeManager.Lib.Models;
 using static GGRev2ComboRecipeManager.Lib.Models.ComboRecipe;
 
 namespace GGRev2ComboRecipeManager.Lib
 {
     public class ComboRecipeManager
     {
-        const int SLOT1_OFFSET_POINTER = 0x00BD4B94;
-        const string PROCESS_NAME = "GuiltyGearXrd";
+        public const int SLOT1_OFFSET_POINTER = 0x00BD4B94;
+        public static readonly int COMBO_RECIPE_SIZE = ComboRecipeData.Size;
 
-        public static ComboRecipe[] ReadComboRecipes()
+        private readonly MemorySharp _sharp;
+        public IntPtr Slot1Address;
+
+        public ComboRecipeManager(MemorySharp sharp)
         {
-            var comboRecipeData = ProcessMemoryManager.ReadProcessMemory(PROCESS_NAME, SLOT1_OFFSET_POINTER, SLOT_DATA_SIZE * 5, true);
-
-            var combo1 = new ComboRecipe(comboRecipeData, 0);
-            var combo2 = new ComboRecipe(comboRecipeData, 1);
-            var combo3 = new ComboRecipe(comboRecipeData, 2);
-            var combo4 = new ComboRecipe(comboRecipeData, 3);
-            var combo5 = new ComboRecipe(comboRecipeData, 4);
-
-            return new[] {combo1, combo2, combo3, combo4, combo5};
+            _sharp = sharp;
+            Slot1Address = sharp.Read<IntPtr>(new IntPtr(SLOT1_OFFSET_POINTER));
         }
 
-        public static ComboRecipe ReadComboRecipe(int slotNr)
+        public ComboRecipe[] ReadComboRecipes()
         {
-            var data = ProcessMemoryManager.ReadProcessMemory(PROCESS_NAME, SLOT1_OFFSET_POINTER, SLOT_DATA_SIZE, true, slotNr * SLOT_DATA_SIZE);
+            var combo1 = _sharp.Read<ComboRecipeData>(Slot1Address + COMBO_RECIPE_SIZE * 0, false);
+            var combo2 = _sharp.Read<ComboRecipeData>(Slot1Address + COMBO_RECIPE_SIZE * 1, false);
+            var combo3 = _sharp.Read<ComboRecipeData>(Slot1Address + COMBO_RECIPE_SIZE * 2, false);
+            var combo4 = _sharp.Read<ComboRecipeData>(Slot1Address + COMBO_RECIPE_SIZE * 3, false);
+            var combo5 = _sharp.Read<ComboRecipeData>(Slot1Address + COMBO_RECIPE_SIZE * 4, false);
 
-            return data != null ? new ComboRecipe(data) : null;
+            return new[]
+            {
+                new ComboRecipe(combo1),
+                new ComboRecipe(combo2),
+                new ComboRecipe(combo3),
+                new ComboRecipe(combo4),
+                new ComboRecipe(combo5)
+            };
         }
 
-        public static void WriteRecipe(ComboRecipe recipe, int slotNr = 0)
+        public ComboRecipe ReadComboRecipe(int slotNr)
         {
-            var data = recipe.ToRecipeData();
+            return new ComboRecipe(_sharp.Read<ComboRecipeData>(Slot1Address + COMBO_RECIPE_SIZE * slotNr, false));
+        }
 
-            ProcessMemoryManager.WriteProcessMemory(PROCESS_NAME, SLOT1_OFFSET_POINTER, data, true, SLOT_DATA_SIZE * slotNr);
+        public void WriteRecipe(ComboRecipe recipe, int slotNr = 0)
+        {
+            _sharp.Write(Slot1Address + slotNr * COMBO_RECIPE_SIZE, recipe.Data, false);
         }
     }
 }

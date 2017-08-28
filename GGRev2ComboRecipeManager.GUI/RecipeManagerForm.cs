@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using GGRev2ComboRecipeManager.Lib;
 using GGRev2ComboRecipeManager.Lib.Models;
@@ -15,10 +16,13 @@ namespace GGRev2ComboRecipeManager.GUI
     {
         private List<ComboRecipe> ComboRecipes;
         private List<DummyRecording> DummyRecordings;
+        private ModuleManager mm;
 
         public RecipeManagerForm()
         {
             InitializeComponent();
+
+            mm = new ModuleManager();
 
             Directory.CreateDirectory(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recipes"));
             Directory.CreateDirectory(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\Recordings"));
@@ -54,8 +58,8 @@ namespace GGRev2ComboRecipeManager.GUI
             var recipe = ImportComboRecipe(0);
             if (recipe == null) return;
 
-            lblCharacterSlot1.Text = recipe.CharacterCode.ToString();
-            btnExportRecipeSlot1.Enabled = recipe.CharacterCode != CharacterCode.Unknown;
+            lblCharacterSlot1.Text = recipe.Data.CharacterCode.ToString();
+            btnExportRecipeSlot1.Enabled = recipe.Data.CharacterCode != CharacterCode.Unknown;
         }
 
         private void btnImportSlot2_Click(object sender, EventArgs e)
@@ -63,8 +67,8 @@ namespace GGRev2ComboRecipeManager.GUI
             var recipe = ImportComboRecipe(1);
             if (recipe == null) return;
 
-            lblCharacterSlot2.Text = recipe.CharacterCode.ToString();
-            btnExportRecipeSlot2.Enabled = recipe.CharacterCode != CharacterCode.Unknown;
+            lblCharacterSlot2.Text = recipe.Data.CharacterCode.ToString();
+            btnExportRecipeSlot2.Enabled = recipe.Data.CharacterCode != CharacterCode.Unknown;
         }
 
         private void btnImportSlot3_Click(object sender, EventArgs e)
@@ -72,8 +76,8 @@ namespace GGRev2ComboRecipeManager.GUI
             var recipe = ImportComboRecipe(2);
             if (recipe == null) return;
 
-            lblCharacterSlot3.Text = recipe.CharacterCode.ToString();
-            btnExportRecipeSlot3.Enabled = recipe.CharacterCode != CharacterCode.Unknown;
+            lblCharacterSlot3.Text = recipe.Data.CharacterCode.ToString();
+            btnExportRecipeSlot3.Enabled = recipe.Data.CharacterCode != CharacterCode.Unknown;
         }
 
         private void btnImportSlot4_Click(object sender, EventArgs e)
@@ -81,8 +85,8 @@ namespace GGRev2ComboRecipeManager.GUI
             var recipe = ImportComboRecipe(3);
             if (recipe == null) return;
 
-            lblCharacterSlot4.Text = recipe.CharacterCode.ToString();
-            btnExportRecipeSlot4.Enabled = recipe.CharacterCode != CharacterCode.Unknown;
+            lblCharacterSlot4.Text = recipe.Data.CharacterCode.ToString();
+            btnExportRecipeSlot4.Enabled = recipe.Data.CharacterCode != CharacterCode.Unknown;
         }
 
         private void btnImportSlot5_Click(object sender, EventArgs e)
@@ -90,8 +94,8 @@ namespace GGRev2ComboRecipeManager.GUI
             var recipe = ImportComboRecipe(4);
             if (recipe == null) return;
 
-            lblCharacterSlot5.Text = recipe.CharacterCode.ToString();
-            btnExportRecipeSlot5.Enabled = recipe.CharacterCode != CharacterCode.Unknown;
+            lblCharacterSlot5.Text = recipe.Data.CharacterCode.ToString();
+            btnExportRecipeSlot5.Enabled = recipe.Data.CharacterCode != CharacterCode.Unknown;
         }
 
         private void btnImportDummySlot1_Click(object sender, EventArgs e)
@@ -99,7 +103,7 @@ namespace GGRev2ComboRecipeManager.GUI
             var recording = ImportDummyRecording(0);
             if (recording == null) return;
 
-            btnExportDummySlot1.Enabled = recording.RecordingData[0] > 0;
+            btnExportDummySlot1.Enabled = recording.Data.Length > 0;
         }
 
         private void btnImportDummySlot2_Click(object sender, EventArgs e)
@@ -107,7 +111,7 @@ namespace GGRev2ComboRecipeManager.GUI
             var recording = ImportDummyRecording(1);
             if (recording == null) return;
 
-            btnExportDummySlot2.Enabled = recording.RecordingData[0] > 0;
+            btnExportDummySlot2.Enabled = recording.Data.Length > 0;
         }
 
         private void btnImportDummySlot3_Click(object sender, EventArgs e)
@@ -115,7 +119,7 @@ namespace GGRev2ComboRecipeManager.GUI
             var recording = ImportDummyRecording(2);
             if (recording == null) return;
 
-            btnExportDummySlot3.Enabled = recording.RecordingData[0] > 0;
+            btnExportDummySlot3.Enabled = recording.Data.Length > 0;
         }
 
         private void btnExportDummySlot1_Click(object sender, EventArgs e)
@@ -163,7 +167,7 @@ namespace GGRev2ComboRecipeManager.GUI
 
         private void btnReadRecipes_Click(object sender, EventArgs e)
         {
-            var recipes = ComboRecipeManager.ReadComboRecipes();
+            var recipes = mm.ComboRecipeManager.ReadComboRecipes();
 
             if (recipes == null)
             {
@@ -173,8 +177,8 @@ namespace GGRev2ComboRecipeManager.GUI
 
             ComboRecipes = recipes.ToList();
 
-            var characterNames = ComboRecipes.Select(cr => Enum.IsDefined(typeof(CharacterCode), cr.CharacterCode)
-                ? cr.CharacterCode.ToString()
+            var characterNames = ComboRecipes.Select(cr => Enum.IsDefined(typeof(CharacterCode), cr.Data.CharacterCode)
+                ? cr.Data.CharacterCode.ToString()
                 : CharacterCode.Unknown.ToString()).ToArray();
 
             lblCharacterSlot1.Text = characterNames[0];
@@ -189,11 +193,11 @@ namespace GGRev2ComboRecipeManager.GUI
             btnImportRecipeSlot4.Enabled = true;
             btnImportRecipeSlot5.Enabled = true;
 
-            btnExportRecipeSlot1.Enabled = ComboRecipes[0].CharacterCode != CharacterCode.Unknown;
-            btnExportRecipeSlot2.Enabled = ComboRecipes[1].CharacterCode != CharacterCode.Unknown;
-            btnExportRecipeSlot3.Enabled = ComboRecipes[2].CharacterCode != CharacterCode.Unknown;
-            btnExportRecipeSlot4.Enabled = ComboRecipes[3].CharacterCode != CharacterCode.Unknown;
-            btnExportRecipeSlot5.Enabled = ComboRecipes[4].CharacterCode != CharacterCode.Unknown;
+            btnExportRecipeSlot1.Enabled = ComboRecipes[0].Data.CharacterCode != CharacterCode.Unknown;
+            btnExportRecipeSlot2.Enabled = ComboRecipes[1].Data.CharacterCode != CharacterCode.Unknown;
+            btnExportRecipeSlot3.Enabled = ComboRecipes[2].Data.CharacterCode != CharacterCode.Unknown;
+            btnExportRecipeSlot4.Enabled = ComboRecipes[3].Data.CharacterCode != CharacterCode.Unknown;
+            btnExportRecipeSlot5.Enabled = ComboRecipes[4].Data.CharacterCode != CharacterCode.Unknown;
         }
 
         private void ExportComboRecipe(int slotNr)
@@ -212,7 +216,7 @@ namespace GGRev2ComboRecipeManager.GUI
 
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                File.WriteAllBytes(sfd.FileName, ComboRecipes[slotNr].ToRecipeData());
+                File.WriteAllBytes(sfd.FileName, ComboRecipes[slotNr].Data.ToByteArray());
             }
         }
 
@@ -232,14 +236,14 @@ namespace GGRev2ComboRecipeManager.GUI
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 var data = File.ReadAllBytes(ofd.FileName);
-                if (data.Length != ComboRecipe.SLOT_DATA_SIZE)
+                if (data.Length != ComboRecipeManager.COMBO_RECIPE_SIZE)
                 {
                     MessageBox.Show("Invalid size for GGCR file");
                     return null;
                 }
 
-                var recipe = new ComboRecipe(data);
-                ComboRecipeManager.WriteRecipe(recipe, slotNr);
+                var recipe = new ComboRecipe(ComboRecipeData.FromByteArray(data));
+                mm.ComboRecipeManager.WriteRecipe(recipe, slotNr);
 
                 return recipe;
             }
@@ -249,8 +253,8 @@ namespace GGRev2ComboRecipeManager.GUI
 
         private void ClearDummyRecordingData(int slotNr)
         {
-            var emptyRecording = new DummyRecording(new byte[DummyRecording.DUMMYRECORDING_SIZE]);
-            DummyRecordingManager.WriteDummyRecording(emptyRecording, slotNr);
+            var emptyRecording = new DummyRecording(DummyRecordingData.FromByteArray(new byte[DummyRecordingManager.DUMMY_RECORDING_SIZE]));
+            mm.DummyRecordingManager.WriteDummyRecording(emptyRecording, slotNr);
         }
 
         private DummyRecording ImportDummyRecording(int slotNr)
@@ -269,14 +273,14 @@ namespace GGRev2ComboRecipeManager.GUI
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 var data = File.ReadAllBytes(ofd.FileName);
-                if (data.Length != DummyRecording.DUMMYRECORDING_SIZE)
+                if (data.Length != DummyRecordingManager.DUMMY_RECORDING_SIZE)
                 {
                     MessageBox.Show("Invalid size for GGDR file");
                     return null;
                 }
 
-                var recording = new DummyRecording(data);
-                DummyRecordingManager.WriteDummyRecording(recording, slotNr);
+                var recording = new DummyRecording(DummyRecordingData.FromByteArray(data));
+                mm.DummyRecordingManager.WriteDummyRecording(recording, slotNr);
 
                 return recording;
             }
@@ -300,13 +304,13 @@ namespace GGRev2ComboRecipeManager.GUI
 
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                File.WriteAllBytes(sfd.FileName, DummyRecordings[slotNr].RecordingData);
+                File.WriteAllBytes(sfd.FileName, DummyRecordings[slotNr].Data.ToByteArray());
             }
         }
 
         private void btnReadDummyRecordings_Click(object sender, EventArgs e)
         {
-            var recordings = DummyRecordingManager.ReadDummyRecordings();
+            var recordings = mm.DummyRecordingManager.ReadDummyRecordings();
 
             if (recordings == null)
             {
@@ -320,13 +324,39 @@ namespace GGRev2ComboRecipeManager.GUI
             btnImportDummySlot2.Enabled = true;
             btnImportDummySlot3.Enabled = true;
 
-            btnExportDummySlot1.Enabled = DummyRecordings[0].RecordingData[4] > 0;
-            btnExportDummySlot2.Enabled = DummyRecordings[1].RecordingData[4] > 0;
-            btnExportDummySlot3.Enabled = DummyRecordings[2].RecordingData[4] > 0;
+            btnExportDummySlot1.Enabled = DummyRecordings[0].Data.Length > 0;
+            btnExportDummySlot2.Enabled = DummyRecordings[1].Data.Length > 0;
+            btnExportDummySlot3.Enabled = DummyRecordings[2].Data.Length > 0;
 
             btnClearDummySlot1.Enabled = true;
             btnClearDummySlot2.Enabled = true;
             btnClearDummySlot3.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Button to test dirty character swapper
+            var t = 0x018701E1;
+            byte val = 0b1;
+            byte val2 = 0b0;
+
+            mm._sharp.Write(new IntPtr(t), val, false);
+            Thread.Sleep(17);
+            mm._sharp.Write(new IntPtr(t), val2, false);
+
+            var ptr = new IntPtr(0x1BDCE04); // this one isn't static, will probably crash the game
+            var r = new Random();
+
+            var c1 = r.Next(0x18);
+            var c2 = r.Next(0x18);
+
+            mm._sharp.Write(ptr, c1);
+            mm._sharp.Write(ptr + 4, c2);
+            Thread.Sleep(256 + 16);
+
+            mm._sharp.Write(new IntPtr(t), val, false);
+            Thread.Sleep(17);
+            mm._sharp.Write(new IntPtr(t), val2, false);
         }
     }
 }

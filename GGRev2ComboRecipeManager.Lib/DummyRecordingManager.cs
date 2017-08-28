@@ -1,4 +1,6 @@
-﻿using GGRev2ComboRecipeManager.Lib.Models;
+﻿using System;
+using Binarysharp.MemoryManagement;
+using GGRev2ComboRecipeManager.Lib.Models;
 using static GGRev2ComboRecipeManager.Lib.Models.DummyRecording;
 
 namespace GGRev2ComboRecipeManager.Lib
@@ -6,31 +8,41 @@ namespace GGRev2ComboRecipeManager.Lib
     public class DummyRecordingManager
     {
         private const int DUMMY_SLOT1_POINTER = 0x00BB02CC;
-        const string PROCESS_NAME = "GuiltyGearXrd";
+        private MemorySharp _sharp;
 
-        public static DummyRecording[] ReadDummyRecordings()
+        public static readonly int DUMMY_RECORDING_SIZE = DummyRecordingData.Size;
+        public IntPtr Slot1Address;
+
+        public DummyRecordingManager(MemorySharp sharp)
         {
-            var dummyRecordingData = ProcessMemoryManager.ReadProcessMemory(PROCESS_NAME, DUMMY_SLOT1_POINTER, DUMMYRECORDING_SIZE * 5, true);
-
-            var recording1 = new DummyRecording(dummyRecordingData, 0);
-            var recording2 = new DummyRecording(dummyRecordingData, 1);
-            var recording3 = new DummyRecording(dummyRecordingData, 2);
-
-            return new[] {recording1, recording2, recording3};
+            _sharp = sharp;
+            Slot1Address = sharp.Read<IntPtr>(new IntPtr(DUMMY_SLOT1_POINTER));
         }
 
-        public static DummyRecording ReadDummyRecording(int slotNr)
+        public DummyRecording[] ReadDummyRecordings()
         {
-            var data = ProcessMemoryManager.ReadProcessMemory(PROCESS_NAME, DUMMY_SLOT1_POINTER, DUMMYRECORDING_SIZE, true, DUMMYRECORDING_SIZE * slotNr);
+            var recording1 = _sharp.Read<DummyRecordingData>(Slot1Address + DUMMY_RECORDING_SIZE * 0, false);
+            var recording2 = _sharp.Read<DummyRecordingData>(Slot1Address + DUMMY_RECORDING_SIZE * 1, false);
+            var recording3 = _sharp.Read<DummyRecordingData>(Slot1Address + DUMMY_RECORDING_SIZE * 2, false);
 
-            return data != null ? new DummyRecording(data) : null;
+            return new[]
+            {
+                new DummyRecording(recording1),
+                new DummyRecording(recording2),
+                new DummyRecording(recording3)
+            };
         }
 
-        public static void WriteDummyRecording(DummyRecording recording, int slotNr)
+        public DummyRecording ReadDummyRecording(int slotNr)
         {
-            var data = recording.RecordingData;
+            var data = _sharp.Read<DummyRecordingData>(Slot1Address + DUMMY_RECORDING_SIZE * slotNr, false);
 
-            ProcessMemoryManager.WriteProcessMemory(PROCESS_NAME, DUMMY_SLOT1_POINTER, data, true, DUMMYRECORDING_SIZE * slotNr);
+            return data.Length > 0 ? new DummyRecording(data) : null;
+        }
+
+        public void WriteDummyRecording(DummyRecording recording, int slotNr)
+        {
+            _sharp.Write(Slot1Address + slotNr * DUMMY_RECORDING_SIZE, recording.Data, false);
         }
     }
 }

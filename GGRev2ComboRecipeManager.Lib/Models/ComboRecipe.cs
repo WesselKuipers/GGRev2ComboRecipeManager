@@ -1,25 +1,41 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using GGRev2ComboRecipeManager.Lib.Extensions;
 
 namespace GGRev2ComboRecipeManager.Lib.Models
 {
     public class ComboRecipe
     {
-        public const int SLOT_CHARCODE_SIZE = 4;
-        public const int SLOT_DATA_SIZE = 1028;
+        public ComboRecipeData Data { get; set; }
 
-        public CharacterCode CharacterCode;
-        public byte[] MoveData = new byte[SLOT_DATA_SIZE - SLOT_CHARCODE_SIZE];
-
-        public ComboRecipe(byte[] comboData, int slotNr = 0)
+        public ComboRecipe(ComboRecipeData data)
         {
-            CharacterCode = (CharacterCode) BitConverter.ToInt32(comboData, slotNr * SLOT_DATA_SIZE);
-            Array.Copy(comboData, slotNr * SLOT_DATA_SIZE + SLOT_CHARCODE_SIZE, MoveData, 0, SLOT_DATA_SIZE - SLOT_CHARCODE_SIZE);
+            Data = data;
         }
+    }
 
-        public byte[] ToRecipeData()
+    public struct ComboRecipeData
+    {
+        [MarshalAs(UnmanagedType.I4)]
+        public CharacterCode CharacterCode;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1024)]
+        public byte[] MoveData;
+
+        public byte[] ToByteArray()
         {
             return ByteArrayExtensions.Combine(BitConverter.GetBytes((int) CharacterCode), MoveData);
+        }
+
+        public static int Size => 1028;
+
+        public static ComboRecipeData FromByteArray(byte[] data)
+        {
+            var handle = GCHandle.Alloc(data, GCHandleType.Pinned);
+            var crd = (ComboRecipeData)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(ComboRecipeData));
+            handle.Free();
+
+            return crd;
         }
     }
 
