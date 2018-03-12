@@ -163,15 +163,7 @@ namespace GGRev2ComboRecipeManager.GUI
 
         private void btnReadRecipes_Click(object sender, EventArgs e)
         {
-            var recipes = ComboRecipeManager.ReadComboRecipes();
-
-            if (recipes == null)
-            {
-                MessageBox.Show("Unable to read Combo Recipe data.");
-                return;
-            }
-
-            ComboRecipes = recipes.ToList();
+            ReadComboRecipes();
 
             var characterNames = ComboRecipes.Select(cr => Enum.IsDefined(typeof(CharacterCode), cr.CharacterCode)
                 ? cr.CharacterCode.ToString()
@@ -300,21 +292,14 @@ namespace GGRev2ComboRecipeManager.GUI
 
             if (sfd.ShowDialog() == DialogResult.OK)
             {
+                ReadDummyRecordings();
                 File.WriteAllBytes(sfd.FileName, DummyRecordings[slotNr].RecordingData);
             }
         }
 
         private void btnReadDummyRecordings_Click(object sender, EventArgs e)
         {
-            var recordings = DummyRecordingManager.ReadDummyRecordings();
-
-            if (recordings == null)
-            {
-                MessageBox.Show("Unable to read Dummy Recording data.");
-                return;
-            }
-
-            DummyRecordings = recordings.ToList();
+            ReadDummyRecordings();
 
             btnImportDummySlot1.Enabled = true;
             btnImportDummySlot2.Enabled = true;
@@ -327,6 +312,32 @@ namespace GGRev2ComboRecipeManager.GUI
             btnClearDummySlot1.Enabled = true;
             btnClearDummySlot2.Enabled = true;
             btnClearDummySlot3.Enabled = true;
+        }
+
+        private void ReadDummyRecordings()
+        {
+            var recordings = DummyRecordingManager.ReadDummyRecordings();
+
+            if (recordings == null)
+            {
+                MessageBox.Show("Unable to read Dummy Recording data.");
+                return;
+            }
+
+            DummyRecordings = recordings.ToList();
+        }
+
+        private void ReadComboRecipes()
+        {
+            var recipes = ComboRecipeManager.ReadComboRecipes();
+
+            if (recipes == null)
+            {
+                MessageBox.Show("Unable to read Combo Recipe data.");
+                return;
+            }
+
+            ComboRecipes = recipes.ToList();
         }
     }
 }
