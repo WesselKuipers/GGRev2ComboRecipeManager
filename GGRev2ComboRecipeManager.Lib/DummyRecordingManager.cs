@@ -5,7 +5,7 @@ namespace GGRev2ComboRecipeManager.Lib
 {
     public class DummyRecordingManager
     {
-        private const int DUMMY_SLOT1_POINTER = 0x00BAF62C;
+        private const int DUMMY_SLOT1_POINTER = 0x00BAF5AC;
         const string PROCESS_NAME = "GuiltyGearXrd";
 
         public static DummyRecording[] ReadDummyRecordings()
